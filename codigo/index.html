@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Frame Extractor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="topbar">
+      <div class="logo">frame extractor</div>
+    </div>
+
+    <h1>Extrair frames de vídeo</h1>
+    <p class="subtitle">Selecione um vídeo e receba todos os frames em JPG dentro de um .zip. Tudo acontece no seu navegador, sem enviar nada para servidores.</p>
+
+    <div class="upload-area" id="uploadArea">
+      <input type="file" id="videoInput" accept="video/*" />
+      <div class="upload-title">Clique ou arraste o vídeo aqui</div>
+      <div class="upload-hint">mp4 · mov · avi · mkv · webm</div>
+      <div class="file-tag" id="fileTag"></div>
+    </div>
+
+    <button class="btn-primary" id="extractBtn" disabled onclick="runExtract()">Extrair frames</button>
+
+    <div class="progress-box" id="progressBox">
+      <div class="progress-header">
+        <span class="progress-label">Processando</span>
+        <span class="progress-pct" id="progPct">0%</span>
+      </div>
+      <div class="track"><div class="fill pulse" id="fill"></div></div>
+      <div class="progress-msg" id="progMsg">Carregando FFmpeg...</div>
+    </div>
+
+    <div class="result-box" id="resultBox">
+      <div class="result-header" id="resultHeader"></div>
+      <div class="stats" id="statsGrid"></div>
+      <div class="preview-strip" id="previewStrip"></div>
+      <a class="btn-dl" id="dlBtn" href="#">↓ Baixar frames.zip</a>
+    </div>
+
+    <footer>100% no navegador · FFmpeg.wasm · JSZip · © miguelfreitas</footer>
+  </div>
+
+  <script src="https://unpkg.com/@ffmpeg/ffmpeg@0.12.6/dist/umd/ffmpeg.js"></script>
+  <script src="https://unpkg.com/@ffmpeg/util@0.12.1/dist/umd/index.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
