@@ -1,6 +1,6 @@
 # Video_para_frames
 
-## Esse código cria uma aplicação web que permite transformar um vídeo em várias imagens, extraindo todos os frames diretamente no navegador.
+Esse código cria uma aplicação web que permite transformar um vídeo em várias imagens, extraindo todos os frames diretamente no navegador.
 
 O usuário seleciona um vídeo do computador e o sistema usa o FFmpeg.wasm para processar o arquivo localmente. Durante o processamento, cada frame do vídeo é convertido em uma imagem JPG.
 
