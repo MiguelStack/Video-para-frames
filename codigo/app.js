@@ -1,4 +1,3 @@
-// ── DOM References ──────────────────────────────────────────────────────────
 const dropZone      = document.getElementById('drop-zone');
 const fileInput     = document.getElementById('file-input');
 const videoEl       = document.getElementById('video-el');
@@ -12,11 +11,9 @@ const progressBar   = document.getElementById('progress-bar');
 const progressPct   = document.getElementById('progress-pct');
 const progressLabel = document.getElementById('progress-label');
 
-// ── State ────────────────────────────────────────────────────────────────────
 let extractedFrames     = [];
 let currentLightboxIndex = -1;
 
-// ── Video Loading ────────────────────────────────────────────────────────────
 dropZone.addEventListener('dragover', e => {
   e.preventDefault();
   dropZone.classList.add('drag-over');
@@ -50,14 +47,12 @@ function loadVideo(file) {
   }, { once: true });
 }
 
-// ── Extract Trigger ──────────────────────────────────────────────────────────
 btnExtract.addEventListener('click', () => {
   const unit = document.getElementById('interval-unit').value;
   if (unit === 'frame') extractByPlaying();
   else extractBySeek();
 });
 
-// ── Mode 1: Seek-based (seconds) ─────────────────────────────────────────────
 async function extractBySeek() {
   const interval = parseFloat(document.getElementById('interval').value) || 1;
   const format   = document.getElementById('format').value;
@@ -106,7 +101,6 @@ function seekAndCapture(time, format) {
   });
 }
 
-// ── Mode 2: Play-based (frames) ───────────────────────────────────────────────
 function extractByPlaying() {
   const everyN  = Math.max(1, Math.round(parseFloat(document.getElementById('interval').value) || 1));
   const format  = document.getElementById('format').value;
@@ -144,7 +138,6 @@ function extractByPlaying() {
     updateProgress(pct, 100, `Frame ${captureCount} capturado (${formatTime(t)})`);
   }
 
-  // requestVideoFrameCallback: fires once per decoded frame (Chrome/Edge)
   if ('requestVideoFrameCallback' in videoEl) {
     let frameIdx = 0;
     function rvfcLoop(_, meta) {
@@ -156,7 +149,7 @@ function extractByPlaying() {
     }
     videoEl.requestVideoFrameCallback(rvfcLoop);
   } else {
-    // Fallback: rAF loop (less precise but works everywhere)
+    
     let frameIdx = 0;
     function rafLoop() {
       if (stopped) return;
@@ -171,7 +164,7 @@ function extractByPlaying() {
   videoEl.play().catch(() => {});
 }
 
-// ── UI Helpers ────────────────────────────────────────────────────────────────
+
 function resetUI() {
   extractedFrames = [];
   framesGrid.innerHTML = '';
@@ -239,7 +232,7 @@ function formatExt(format) {
 
 function tick() { return new Promise(r => setTimeout(r, 0)); }
 
-// ── Download ZIP ──────────────────────────────────────────────────────────────
+
 document.getElementById('btn-dl-all').addEventListener('click', async () => {
   if (!extractedFrames.length) return;
   const zip    = new JSZip();
@@ -255,14 +248,14 @@ document.getElementById('btn-dl-all').addEventListener('click', async () => {
   a.click();
 });
 
-// ── Clear ─────────────────────────────────────────────────────────────────────
+
 document.getElementById('btn-clear').addEventListener('click', () => {
   extractedFrames = [];
   framesGrid.innerHTML = '';
   framesSection.style.display = 'none';
 });
 
-// ── Grid Size ─────────────────────────────────────────────────────────────────
+
 framesGrid.style.setProperty('--cols', '2');
 
 document.querySelectorAll('.grid-btn').forEach(btn => {
@@ -273,7 +266,7 @@ document.querySelectorAll('.grid-btn').forEach(btn => {
   });
 });
 
-// ── Lightbox ──────────────────────────────────────────────────────────────────
+
 function openLightbox(index) {
   currentLightboxIndex = index;
   const frame = extractedFrames[index];
