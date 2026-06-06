@@ -1,29 +1,22 @@
-# Video para frames
+# Video para Frames
 
-Esse código cria uma aplicação web que permite transformar um vídeo em várias imagens, extraindo todos os frames diretamente no navegador.
+Esse projeto cria uma aplicação web capaz de extrair frames de vídeos diretamente no navegador.
 
-O usuário seleciona um vídeo do computador e o sistema usa o FFmpeg.wasm para processar o arquivo localmente. Durante o processamento, cada frame do vídeo é convertido em uma imagem JPG.
+O usuário pode enviar um vídeo do computador, escolher o intervalo de captura e gerar automaticamente várias imagens a partir do vídeo. Os frames extraídos podem ser visualizados na própria interface, baixados individualmente ou compactados em um arquivo `.zip`.
 
-Depois da extração, todas as imagens são organizadas automaticamente em um arquivo `.zip`, permitindo que o usuário baixe tudo de uma vez.
+A aplicação também exibe informações do vídeo, como duração, resolução, nome do arquivo e progresso da extração em tempo real.
 
-## A aplicação também mostra:
+Todo o processamento acontece localmente no navegador, sem necessidade de enviar arquivos para servidores externos.
 
-- o nome e tamanho do vídeo enviado
-- o progresso da extração em tempo real
-- a quantidade de frames gerados
-- uma prévia de alguns frames extraídos
+## Tecnologias utilizadas
 
-Todo o processamento acontece no próprio navegador, sem enviar arquivos para servidores externos.
+- HTML
+- CSS
+- JavaScript
+- Canvas API
+- JSZip
 
-## O código utiliza:
-
-- HTML para a estrutura da página
-- CSS para o design da interface
-- JavaScript para toda a lógica da aplicação
-- FFmpeg.wasm para processar o vídeo
-- JSZip para criar o arquivo `.zip`
-
-Na prática, o projeto funciona como um extrator de frames online que roda totalmente no lado do cliente.
+Na prática, o projeto funciona como um extrator de frames online totalmente client-side.
 
 ## Link do site
 
