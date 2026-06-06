@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frame Extract</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <div class="logo-dot"></div>
+    Frame Extract
+  </div>
+  <div class="badge">100% client-side</div>
+</header>
+
+<main>
+  <p class="page-title">Extrair frames do vídeo</p>
+  <p class="page-sub">Carregue um vídeo, defina o intervalo e baixe os frames.</p>
+
+  <div class="drop-zone" id="drop-zone">
+    <input type="file" id="file-input" accept="video/*" />
+    <div class="drop-icon">🎬</div>
+    <h3>Solte o vídeo aqui</h3>
+    <p>MP4, WebM, MOV, AVI — ou clique para selecionar</p>
+  </div>
+
+  <div id="video-preview-wrap">
+    <video id="video-el" controls></video>
+    <div class="video-meta">
+      <div class="meta-item"><span>Duração</span><span id="meta-duration">—</span></div>
+      <div class="meta-item"><span>Resolução</span><span id="meta-res">—</span></div>
+      <div class="meta-item"><span>FPS (est.)</span><span id="meta-fps">—</span></div>
+      <div class="meta-item"><span>Arquivo</span><span id="meta-name">—</span></div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <div class="field">
+      <label>Intervalo entre frames</label>
+      <input type="number" id="interval" value="1" min="0.1" step="0.1" />
+    </div>
+    <div class="field">
+      <label>Unidade</label>
+      <select id="interval-unit">
+        <option value="second">Segundo(s)</option>
+        <option value="frame">Frame(s)</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>Formato de saída</label>
+      <select id="format">
+        <option value="image/jpeg">JPEG</option>
+        <option value="image/png">PNG</option>
+        <option value="image/webp">WebP</option>
+      </select>
+    </div>
+    <button class="btn-extract" id="btn-extract" disabled>Extrair</button>
+  </div>
+
+  <div id="progress-wrap">
+    <div class="progress-header">
+      <span id="progress-label">Processando...</span>
+      <span class="progress-pct" id="progress-pct">0%</span>
+    </div>
+    <div class="progress-bar-bg">
+      <div class="progress-bar-fill" id="progress-bar"></div>
+    </div>
+  </div>
+
+  <div id="frames-section">
+    <hr class="divider" />
+    <div class="frames-header">
+      <h2>Frames<span id="frame-count-label"></span></h2>
+      <div class="frames-actions">
+        <button class="btn-secondary" id="btn-dl-all">↓ Baixar ZIP</button>
+        <button class="btn-secondary" id="btn-clear">Limpar</button>
+      </div>
+    </div>
+    <div class="grid-controls">
+      <label>Grade:</label>
+      <button class="grid-btn active" data-cols="2">▦</button>
+      <button class="grid-btn" data-cols="4">⊞</button>
+      <button class="grid-btn" data-cols="6">⋮</button>
+    </div>
+    <div id="frames-grid"></div>
+  </div>
+</main>
+
+<div id="lightbox">
+  <button id="lightbox-close">✕</button>
+  <img id="lightbox-img" src="" alt="" />
+  <div id="lightbox-bar">
+    <span id="lb-frame">—</span>
+    <span id="lb-time">—</span>
+    <span id="lb-res">—</span>
+    <button id="lightbox-dl">↓ Baixar frame</button>
+  </div>
+</div>
+
+<canvas id="canvas"></canvas>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
