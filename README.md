@@ -24,3 +24,7 @@ Todo o processamento acontece no próprio navegador, sem enviar arquivos para se
 - JSZip para criar o arquivo `.zip`
 
 Na prática, o projeto funciona como um extrator de frames online que roda totalmente no lado do cliente.
+
+## Link do site
+
+- https://videoparaframes.netlify.app/
