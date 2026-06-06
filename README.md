@@ -1,4 +1,4 @@
-# Video_para_frames
+# Video para frames
 
 Esse código cria uma aplicação web que permite transformar um vídeo em várias imagens, extraindo todos os frames diretamente no navegador.
 
