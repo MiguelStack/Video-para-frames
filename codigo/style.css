@@ -57,7 +57,7 @@ header {
   border-radius: 20px;
 }
 
-/* ── Main ── */
+
 main {
   max-width: 960px;
   margin: 0 auto;
@@ -76,7 +76,7 @@ main {
   margin-bottom: 32px;
 }
 
-/* ── Drop Zone ── */
+
 .drop-zone {
   position: relative;
   padding: 48px 32px;
